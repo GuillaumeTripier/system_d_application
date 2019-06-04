@@ -26,7 +26,7 @@ public class App {
     public void setApps(int count){
         List<App> apps = new ArrayList<>();
         for(int i = 0; i < count; i++){
-            apps.add(new App(20.0 + i, 0));
+            apps.add(new App(10.0 + i, 0));
         }
         this.apps = apps;
     }
@@ -36,14 +36,25 @@ public class App {
     }
 
     public void printApps(){
+        System.out.println(getRigidity());
         for(int i = 0; i < getApps().size(); i++){
             System.out.println(getApps().get(i).getRigidity());
         }
     }
 
-    public static void main(String[] args) {
-        App app = new App(10, 40);
-        app.printApps();
+    public double getTotalRigidity(){
+        double total = 0.0;
+        for(int i = 0; i < getApps().size(); i++){
+            total += getApps().get(i).getRigidity();
+        }
+        total += getRigidity();
+        total /= getApps().size() +1;
+        return total;
+    }
 
+    public static void main(String[] args) {
+        App app = new App(14.0, 4);
+        app.printApps();
+        System.out.println("\n" + app.getTotalRigidity());
     }
 }
