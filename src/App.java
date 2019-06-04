@@ -12,7 +12,7 @@ public class App {
 
     public App(double rigidity, int number){
         setRigidity(rigidity);
-        setApps(number);
+        this.apps = new ArrayList<>();
     }
 
     public double getRigidity(){
@@ -23,12 +23,8 @@ public class App {
         this.rigidity = rigidity;
     }
 
-    public void setApps(int count){
-        List<App> apps = new ArrayList<>();
-        for(int i = 0; i < count; i++){
-            apps.add(new App(10.0 + i, 0));
-        }
-        this.apps = apps;
+    public void setApp(App app){
+        this.apps.add(app);
     }
 
     public List<App> getApps(){
@@ -42,19 +38,15 @@ public class App {
         }
     }
 
-    public double getTotalRigidity(){
-        double total = 0.0;
-        for(int i = 0; i < getApps().size(); i++){
-            total += getApps().get(i).getRigidity();
-        }
-        total += getRigidity();
-        total /= getApps().size() +1;
-        return total;
-    }
-
     public static void main(String[] args) {
-        App app = new App(14.0, 4);
+        SystemSimu systemSimu = new SystemSimu(5);
+        App app = systemSimu.getApps().get(0);
+        for(int i = 1; i < systemSimu.getApps().size(); i++) {
+            app.setApp(systemSimu.getApps().get(i));
+        }
         app.printApps();
-        System.out.println("\n" + app.getTotalRigidity());
+        System.out.println("\n" + systemSimu.getTotalRigidity());
+
+        // A Faire : calculer la rigidité totale après n générations (à chaque génération, la rigidité augemente de 5% à chaque génération
     }
 }

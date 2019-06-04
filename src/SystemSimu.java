@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class System {
+public class SystemSimu {
     private List<App> totalApps;
 
-    public System(){
+    public SystemSimu(){
 
     }
 
-    public System(int numberOfApps){
+    public SystemSimu(int numberOfApps){
         createApps(numberOfApps);
     }
 
@@ -29,6 +29,6 @@ public class System {
         for(int i = 0; i < totalApps.size(); i++){
             total += totalApps.get(i).getRigidity();
         }
-        return total;
+        return total/totalApps.size();
     }
 }
