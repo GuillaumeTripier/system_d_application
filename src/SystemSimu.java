@@ -8,14 +8,14 @@ public class SystemSimu {
 
     }
 
-    public SystemSimu(int numberOfApps){
-        createApps(numberOfApps);
+    public SystemSimu(int numberOfApps, int rigiditySupp){
+        createApps(numberOfApps, rigiditySupp);
     }
 
-    private void createApps(int numberOfApps) {
+    private void createApps(int numberOfApps, int rigiditySupp) {
         List<App> apps = new ArrayList<>();
         for(int i = 0; i < numberOfApps; i++){
-            apps.add(new App(10.0 + i, 0));
+            apps.add(new App(10.0 + i + rigiditySupp, 0));
         }
         this.totalApps = apps;
     }

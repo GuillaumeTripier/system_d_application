@@ -38,15 +38,20 @@ public class App {
         }
     }
 
-    public static void main(String[] args) {
-        SystemSimu systemSimu = new SystemSimu(5);
+    public static double makeGeneration(int rigidity){
+        SystemSimu systemSimu = new SystemSimu(5, rigidity);
         App app = systemSimu.getApps().get(0);
         for(int i = 1; i < systemSimu.getApps().size(); i++) {
             app.setApp(systemSimu.getApps().get(i));
         }
         app.printApps();
-        System.out.println("\n" + systemSimu.getTotalRigidity());
+        return(systemSimu.getTotalRigidity());
+    }
 
-        // A Faire : calculer la rigidité totale après n générations (à chaque génération, la rigidité augemente de 5% à chaque génération
+    public static void main(String[] args) {
+        for(int i = 0; i < 10; i++){
+            System.out.println("Moyenne = " + makeGeneration(i*5));
+            System.out.println('\n');
+        }
     }
 }
