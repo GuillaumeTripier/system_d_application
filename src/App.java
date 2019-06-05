@@ -54,7 +54,7 @@ public class App {
     }
 
     public static void main(String[] args) {
-        DisplayInterface display = new DisplayImageStrategy();//DisplayConsoleStrategy();
+        DisplayInterface display = new DisplayMoyennePlotStrategy();//DisplayImageStrategy();//DisplayConsoleStrategy();
         for(int i = 0; i < 10; i++){
             List<Double> d = makeGeneration(i*5);
             display.printGenerationFull(d, i);
